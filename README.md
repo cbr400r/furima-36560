@@ -6,13 +6,12 @@
 | ---------------------- | ------ | ------------------------ |
 | nickname               | string | null:false               |
 | email                  | string | null:false, unique: true |
-| password               | string | null:false               |
 | encrypted_password     | string | null:false               |
 | last_name              | string | null:false               |
 | first_name             | string | null:false               |
 | last_name_kana         | string | null:false               |
 | first_name_kana        | string | null:false               |
-| birthday               | string | null:false               |
+| birthday               | date   | null:false               |
 
 
 ### Association
@@ -20,8 +19,7 @@
  - has_many :sales
  - has_many :destinations
  - has_many :items
- - has_one :cards
-
+ - has_many :buyer
 
 ## sales テーブル
 
@@ -55,26 +53,16 @@
 
  - belongs_to :users
 
- ## items テーブル
-
-| Column        | Type       | Options    |
-| ------------- | ---------- | ---------- |
-| product_name  | text       | null:false |
-| price         | integer    | null:false |
-| category      | string     | null:false |
-| seller        | integer    | null:false |
-
-### Association
-
- - belongs_to :users
-
- ## cards テーブル
+ ## buyers テーブル
 
 | Column         | Type       | Options    |
 | -------------- | ---------- | ---------- |
-| card_number    | integer    | null:false |
-| card_period    | integer    | null:false |
-| security_card  | integer    | null:false |
+| seller         | text       | null:false |
+| category       | text       | null:false |
+| item_status    | text       | null:false |
+| delivery_cost  | text       | null:false |
+| send_area      | text       | null:false |
+| send_day       | text       | null:false |
 
 ### Association
 
