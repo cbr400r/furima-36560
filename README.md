@@ -19,7 +19,7 @@
  - has_many :sales
  - has_many :destinations
  - has_many :items
- - has_many :buyer
+ - has_many :buyers
 
 ## sales テーブル
 
@@ -28,42 +28,42 @@
 | image            | string     | null:false |
 | item_name        | string     | null:false |
 | item_contents    | string     | null:false |
-| category         | text       | null:false |
-| item_status      | text       | null:false |
+| category         | integer    | null:false |
+| item_status      | integer    | null:false |
 | delivery_cost    | integer    | null:false |
 | send_area        | integer    | null:false |
 | send_day         | integer    | null:false |
+| price            | integer    | null:false |
+| commission       | integer    | null:false |
+| profit           | integer    | null:false |
+| user_id          | integer    | null:false, foreign_key: true |
 
 ### Association
 
- - belongs_to :users
+ - belongs_to :user
 
 ## destinations テーブル
 
-| Column         | Type       | Options    |
-| -------------- | ---------- | ---------- |
-| post_number    | string     | null:false |
-| prefecture     | string     | null:false |
-| city           | string     | null:false |
-| address        | integer    | null:false |
-| building_name  | string     |            |
-| phone_number   | integer    | null:false |
+| Column         | Type         | Options    |
+| -------------- | ------------ | ---------- |
+| post_number    | string       | null:false |
+| prefecture     | string       | null:false |
+| city           | string       | null:false |
+| address        | string       | null:false |
+| building_name  | string       |            |
+| phone_number   | string       | null:false |
+| user_id        | references   | null:false, foreign_key: true |
 
 ### Association
 
- - belongs_to :users
+ - belongs_to :user
 
  ## buyers テーブル
 
-| Column         | Type       | Options    |
-| -------------- | ---------- | ---------- |
-| seller         | text       | null:false |
-| category       | text       | null:false |
-| item_status    | text       | null:false |
-| delivery_cost  | text       | null:false |
-| send_area      | text       | null:false |
-| send_day       | text       | null:false |
-
+| Column         | Type       | Options                       |
+| -------------- | ---------- | ----------------------------- |
+| user_id        | references | null:false, foreign_key: true |
+| sale_id        | references | null:false, foreign_key: true |
 ### Association
 
- - belongs_to :users
+ - belongs_to :user
